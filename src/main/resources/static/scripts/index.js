@@ -4,12 +4,13 @@ let inputField = document.querySelector('#input-text');
 let receiveButton = document.querySelector('#receive-button');
 let outputField = document.querySelector('#output-text');
 
+
 sendButton.addEventListener('click', () => {
     fetch('http://localhost:8000/api', {
         method: "POST",
         body: inputField.value
     });
-    alert("Sent!");
+    alert("Sent");
 });
 
 
@@ -28,3 +29,4 @@ receiveButton.addEventListener('click', async () => {
             console.error('Ошибка запроса:', error);
         }
 });
+
