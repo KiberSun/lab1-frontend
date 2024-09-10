@@ -1,8 +1,8 @@
 
 let sendButton = document.querySelector('#send-button');
-let inputField = document.querySelector('#input-field');
+let inputField = document.querySelector('#input-text');
 let receiveButton = document.querySelector('#receive-button');
-let outputField = document.querySelector('#output-field');
+let outputField = document.querySelector('#output-text');
 
 
 sendButton.addEventListener('click', () => {
@@ -13,8 +13,20 @@ sendButton.addEventListener('click', () => {
     alert("Sent");
 });
 
-receiveButton.addEventListener('click', () => {
-    await fetch('http://localhost:8000/api').then((response) => {
-        outputField.value = response.body;
-    });
+
+receiveButton.addEventListener('click', async () => {
+        try {
+            let res = await fetch('http://localhost:8000/api', {
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                }
+            });
+            if (!res.ok) {
+                throw new Error('Network response was not ok ' + res.statusText);
+            }
+            outputField.value = await res.text();
+        } catch (error) {
+            console.error('Ошибка запроса:', error);
+        }
 });
+
