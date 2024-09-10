@@ -7,7 +7,7 @@
     justify-content: space-around;
 }
 
-.send-button{
+button{
     padding: 15px;
     border-radius: 15px;
     border-style: solid;
@@ -18,6 +18,6 @@
     font-weight: bold;
 }
 
-.input-text{
+textarea{
     width: 80%;
 }
