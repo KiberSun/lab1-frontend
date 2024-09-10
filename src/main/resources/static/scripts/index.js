@@ -15,18 +15,7 @@ sendButton.addEventListener('click', () => {
 
 
 receiveButton.addEventListener('click', async () => {
-        try {
-            let res = await fetch('http://localhost:8000/api', {
-                headers: {
-                    'Access-Control-Allow-Origin': '*'
-                }
-            });
-            if (!res.ok) {
-                throw new Error('Network response was not ok ' + res.statusText);
-            }
-            outputField.value = await res.text();
-        } catch (error) {
-            console.error('Ошибка запроса:', error);
-        }
+      let res = await fetch('http://localhost:8000/api');
+      outputField.value = await res.text();
 });
 
